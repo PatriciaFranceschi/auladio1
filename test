@@ -1,0 +1,54 @@
+package com.company;
+
+import com.company.facade.Facade;
+import com.company.singleton.SingleLazyHolder;
+import com.company.singleton.SingletonEager;
+import com.company.singleton.SingletonLazy;
+import com.company.strategy.*;
+
+public class Test {
+
+    public static void main(String[] args) {
+        //Singleton
+        SingletonLazy lazy = SingletonLazy.getInstancia();
+        System.out.println(lazy);
+        lazy = SingletonLazy.getInstancia();
+        System.out.println(lazy);
+
+        SingletonEager eager= SingletonEager.getInstancia();
+        System.out.println(eager);
+        eager = SingletonEager.getInstancia();
+        System.out.println(eager);
+
+        SingleLazyHolder lazyHolder= SingleLazyHolder.getInstacia();
+        System.out.println(lazyHolder);
+        lazyHolder = SingleLazyHolder.getInstacia();
+        System.out.println(lazyHolder);
+
+        // Strategy
+        Comportamento defensivo = new ComportamentoDefensivo();
+        Comportamento normal = new ComportamentoNormal();
+        Comportamento agressivo = new ComportamentoAgressivo();
+
+
+        Robo robo = new Robo();
+        robo.setComportamentp(normal);
+        robo.mover();
+        robo.mover();
+        robo.setComportamentp(defensivo);
+        robo.mover();
+        robo.setComportamentp(agressivo);
+        robo.mover();
+        robo.mover();
+
+        //Facede
+
+        Facade facade = new Facade();
+        facade.migrarCliente("Ana", "123244");
+
+
+            }
+        }
+
+
+
